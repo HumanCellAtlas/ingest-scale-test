@@ -106,10 +106,10 @@ class TestEndToEndDCP(unittest.TestCase):
 
 class TestSmartSeq2Run(TestEndToEndDCP):
 
-    SMARTSEQ2_BUNDLE_FIXTURE_PATH = 'tests/fixtures/bundles/Smart-seq2'
+    SCALE_TEST_XLS_PATH = 'tests/fixtures/bundles/scale/gliob_1000.xlsx'
 
     def test_smartseq2_run(self):
-        runner = self.ingest_store_and_analyze_bundle(self.SMARTSEQ2_BUNDLE_FIXTURE_PATH)
+        runner = self.ingest_store_and_analyze_bundle(self.SCALE_TEST_XLS_PATH)
 
 
 if __name__ == '__main__':
