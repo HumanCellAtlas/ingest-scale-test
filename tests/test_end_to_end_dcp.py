@@ -4,6 +4,7 @@ import os
 import re
 import subprocess
 import unittest
+import time
 from urllib.parse import urlparse
 
 import requests
@@ -25,11 +26,21 @@ class BundleRunner:
         self.submission_envelope = None
         self.upload_credentials = None
 
+        self.start_time = None
+        self.end_time = None
+
     def run(self, bundle_fixture):
+        self.start_time = time.time()
+
         self.upload_spreadsheet_and_create_submission(bundle_fixture)
         self.get_upload_area_credentials()
         self.forget_about_upload_area()
         self.wait_for_envelope_to_be_validated()
+
+        self.end_time = time.time()
+
+        print("Running time:" + str(self.end_time - self.start_time))
+
 
     def upload_spreadsheet_and_create_submission(self, bundle_fixture):
         spreadhseet_filename = os.path.basename(bundle_fixture.metadata_spreadsheet_path)
