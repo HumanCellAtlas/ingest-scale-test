@@ -28,7 +28,6 @@ class BundleRunner:
     def run(self, bundle_fixture):
         self.upload_spreadsheet_and_create_submission(bundle_fixture)
         self.get_upload_area_credentials()
-        self.stage_data_files(bundle_fixture)
         self.forget_about_upload_area()
         self.wait_for_envelope_to_be_validated()
 
